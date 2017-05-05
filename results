@@ -1,0 +1,323 @@
+Codeception PHP Testing Framework v2.2.10
+Powered by PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
+
+Acceptance Tests (5) --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Modules: Asserts, WebDriver, \Helper\Acceptance
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_filterCept: Search for a Hotel
+Signature: test_filterCept
+Test: tests\acceptance\test_filterCept.php
+Scenario --
+ I am on page "/"
+  [GET] https://www.trivago.co.uk/
+ Codeception\Test\Cept: test 
+   I click "input[name='sQuery']"
+   I fill field "input[name='sQuery']","New York"
+   I press key "input[name='sQuery']",""
+   I wait for js "return $.active == 0;",10
+   I click "button.js-btn-search"
+   I wait for js "return $.active == 0;",10
+   I wait for element visible "button.df_overlay_close_wrap",30
+   I click "button.df_overlay_close_wrap"
+   I wait 2
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I can see "New York","li.hotel.item-order__list-item.js_co_item"
+   I wait for element "button[title='Pets allowed']"
+   I click "button[title='Pets allowed']"
+   I wait for js "return $.active == 0;",30
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I wait for element "li.hotel.item-order__list-item.js_co_item p.details__paragraph",30
+   I click "li.hotel.item-order__list-item.js_co_item p.details__paragraph"
+   I wait for element "li.hotel.item-order__list-item.js_co_item .top-features li[title='Feature available']"
+   I wait for text "Pets",10,"li.hotel.item-order__list-item.js_co_item .top-features "
+   I see "Pets","li.hotel.item-order__list-item.js_co_item .top-features "
+   I grab multiple "li.hotel.item-order__list-item.js_co_item .top-features li[title='Feature available']"
+   I assert true true,"Pets is one of the Hotel features."
+   I click "li.hotel.item-order__list-item.js_co_item p.details__paragraph"
+ I wait 2
+ Codeception\Test\Cept: test 
+   I wait for element "button[title='Free WiFi']"
+   I click "button[title='Free WiFi']"
+   I wait for js "return $.active == 0;",30
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I wait for element "li.hotel.item-order__list-item.js_co_item p.details__paragraph",30
+   I click "li.hotel.item-order__list-item.js_co_item p.details__paragraph"
+   I wait for element "li.hotel.item-order__list-item.js_co_item .top-features li[title='Feature available']"
+   I grab multiple "li.hotel.item-order__list-item.js_co_item .top-features li[title='Feature available']"
+   I assert true true,"Free WiFi is one of the Hotel features"
+ I wait 2
+ Codeception\Test\Cept: test 
+   I click "button[title='Breakfast']"
+   I wait for js "return $.active == 0;",30
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I see "breakfast","li.hotel.item-order__list-item.js_co_item em.item__meal-plan"
+ PASSED 
+
+test_oneCept: Search for a Hotel
+Signature: test_oneCept
+Test: tests\acceptance\test_oneCept.php
+Scenario --
+ I am on page "/"
+  [GET] https://www.trivago.co.uk/
+ Codeception\Test\Cept: test 
+   I click "input[name='sQuery']"
+   I fill field "input[name='sQuery']","Dornbirn"
+   I press key "input[name='sQuery']",""
+   I wait for js "return $.active == 0;",10
+   I click "button.js-btn-search"
+   I wait for js "return $.active == 0;",10
+   I wait for element visible "button.df_overlay_close_wrap",30
+   I click "button.df_overlay_close_wrap"
+   I wait 2
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I can see "Dornbirn","li.hotel.item-order__list-item.js_co_item"
+   I click "button[title='Breakfast']"
+   I wait for js "return $.active == 0;",30
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I see "breakfast","li.hotel.item-order__list-item.js_co_item em.item__meal-plan"
+ PASSED 
+
+test_paginationCept: Search for a Hotel
+Signature: test_paginationCept
+Test: tests\acceptance\test_paginationCept.php
+Scenario --
+ I am on page "/"
+  [GET] https://www.trivago.co.uk/
+ Codeception\Test\Cept: test 
+   I click "input[name='sQuery']"
+   I fill field "input[name='sQuery']","Munich"
+   I press key "input[name='sQuery']",""
+   I wait for js "return $.active == 0;",10
+   I click "button.js-btn-search"
+   I wait for js "return $.active == 0;",10
+   I wait for element visible "button.df_overlay_close_wrap",30
+   I click "button.df_overlay_close_wrap"
+   I wait 2
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I can see "Munich","li.hotel.item-order__list-item.js_co_item"
+   I wait for element "button.btn--pagination.btn--next",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "button.btn--pagination.btn--next",30
+   I click "button.btn--pagination.btn--next"
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I grab multiple "button.btn--pagination.btn--next"
+ PASSED 
+
+test_searchCept: Search for a Hotel
+Signature: test_searchCept
+Test: tests\acceptance\test_searchCept.php
+Scenario --
+ I am on page "/"
+  [GET] https://www.trivago.co.uk/
+ Codeception\Test\Cept: test 
+   I click "input[name='sQuery']"
+   I fill field "input[name='sQuery']","Dornbirn"
+   I press key "input[name='sQuery']",""
+   I wait for js "return $.active == 0;",10
+   I click "button.js-btn-search"
+   I wait for js "return $.active == 0;",10
+   I wait for element visible "button.df_overlay_close_wrap",30
+   I click "button.df_overlay_close_wrap"
+   I wait 2
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I can see "Dornbirn","li.hotel.item-order__list-item.js_co_item"
+ PASSED 
+
+test_sortCept: Search for a Hotel
+Signature: test_sortCept
+Test: tests\acceptance\test_sortCept.php
+Scenario --
+ I am on page "/"
+  [GET] https://www.trivago.co.uk/
+ Codeception\Test\Cept: test 
+   I click "input[name='sQuery']"
+   I fill field "input[name='sQuery']","Munich"
+   I press key "input[name='sQuery']",""
+   I wait for js "return $.active == 0;",10
+   I click "button.js-btn-search"
+   I wait for js "return $.active == 0;",10
+   I wait for element visible "button.df_overlay_close_wrap",30
+   I click "button.df_overlay_close_wrap"
+   I wait 2
+   I wait for js "return $.active == 0;",10
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I can see "Munich","li.hotel.item-order__list-item.js_co_item"
+   I select option "#mf-select-sortby","Sort only by Rating"
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I wait 5
+   I grab multiple "li.hotel.item-order__list-item.js_co_item span[itemprop='ratingValue']"
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I select option "#mf-select-sortby","Sort only by Price"
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I wait 5
+   I grab multiple "li.hotel.item-order__list-item.js_co_item strong.item__best-price"
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I select option "#mf-select-sortby","Sort only by Distance"
+   I wait for element "li.hotel.item-order__list-item.js_co_item",30
+   I wait 5
+   I grab multiple "li.hotel.item-order__list-item.js_co_item span.item__distance"
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+   I assert true true,"Results are not on the correct order."
+ PASSED 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Time: 4.18 minutes, Memory: 12.00MB
+
+OK (5 tests, 85 assertions)
