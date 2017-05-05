@@ -11,7 +11,9 @@ $I = new SearchTester($scenario);
 $I->searchForCity('New York');
 $I = new FilterTester($scenario);
 $I->selectPetsAllowed();
+$I->wait(2);
 $I->selectFreeWifi();
+$I->wait(2);
 $I->selectBreakfast();
 
 ?>

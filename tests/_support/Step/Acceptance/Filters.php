@@ -8,8 +8,10 @@ class Filters extends \AcceptanceTester
     public function selectPetsAllowed()
     {
         $I = $this;
+        $I->waitForElement("button[title='Pets allowed']");
+
         $I->click("button[title='Pets allowed']");
-        $I->wait(1);
+        //$I->wait(10);
         $I->waitForJS("return $.active == 0;",30);
         $I->waitForElement('li.hotel.item-order__list-item.js_co_item',30);
         $I->waitForElement('li.hotel.item-order__list-item.js_co_item p.details__paragraph',30);
@@ -20,15 +22,20 @@ class Filters extends \AcceptanceTester
             $I->click('li.hotel.item-order__list-item.js_co_item p.details__paragraph');
             $I->waitForElement("li.hotel.item-order__list-item.js_co_item .top-features li[title='Feature available']");
         }
+        
+        
+        $I->waitForText('Pets', 10, "li.hotel.item-order__list-item.js_co_item .top-features ");
+        $I->see('Pets',"li.hotel.item-order__list-item.js_co_item .top-features ");
         $linkClasses = $I->grabMultiple("li.hotel.item-order__list-item.js_co_item .top-features li[title='Feature available']");
         //\Codeception\Util\Debug::debug($linkClasses);
-        $I->assertTrue(in_array("Pets", $linkClasses),"Pets is one of the Hotel features");
+        $I->assertTrue(in_array("Pets", $linkClasses),"Pets is one of the Hotel features.");
         $I->click('li.hotel.item-order__list-item.js_co_item p.details__paragraph');
     }
 
     public function selectFreeWifi()
     {
         $I = $this;
+        $I->waitForElement("button[title='Free WiFi']");
         $I->click("button[title='Free WiFi']");
         //$I->wait(20);
         $I->waitForJS("return $.active == 0;",30);
